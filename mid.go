@@ -17,9 +17,10 @@ func (e *HTTPError) Error() string {
 	return fmt.Sprintf("Code %d, %s", e.Code, e.Message)
 }
 
+// HandleErrors wraps error parsing
 func HandleErrors(mid cntFunc) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		err := mid(w,r)
+		err := mid(w, r)
 		if err != nil {
 			if ae, ok := err.(*HTTPError); ok {
 				http.Error(w, ae.Error(), ae.Code)
@@ -28,6 +29,5 @@ func HandleErrors(mid cntFunc) func(w http.ResponseWriter, r *http.Request) {
 			}
 			return
 		}
-		fmt.Fprintln(w, "OK")
 	}
 }
