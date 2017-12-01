@@ -5,7 +5,7 @@ import "google/protobuf/timestamp.proto";
 
 message Message {
   required int64 driverId = 1;
-  required float latitude = 2;
-  required float longitude = 3;
+  required double latitude = 2;
+  required double longitude = 3;
   required google.protobuf.Timestamp stamp = 4;
 }
