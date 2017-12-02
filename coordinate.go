@@ -6,6 +6,8 @@ type Coordinate struct {
 }
 
 type RedisCoordinate struct {
-	Coordinate
-	Seconds int64 `json:"seconds"`
+	Latitude  float64 `json:"latitude"`
+	Longitude float64 `json:"longitude"`
+	Seconds   int64   `json:"seconds"`
+	Nanos     int32   `json:"nanos"`
 }
